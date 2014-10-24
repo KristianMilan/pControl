@@ -1,10 +1,6 @@
 <?php
 include 'rb.php';
 include 'dbconfig.php';
-include 'src/PhpGpio/GpioInterface.php';
-include 'src/PhpGpio/Gpio.php';
-include 'src/PhpGpio/GpioDevelop.php';
-include 'src/PhpGpio/Pi.php';
 error_reporting(E_ALL);
 session_save_path("/tmp");
 session_start();
