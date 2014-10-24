@@ -260,6 +260,7 @@
         </div>
 		</div>
       <div class="switch-container"></div>
+	  <div class="ui 2 fluid buttons"><div class="ui red button all-off">OFF</div><div class="ui green button all-on">ON</div></div>
 </body>
 
 </html>

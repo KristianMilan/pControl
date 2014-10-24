@@ -19,6 +19,17 @@ function updates() {
             });
 		}
         function bindToDevices() {
+		//all on
+			$('.all-on').on('click', function() {
+				//alert('trol');
+               $('.device-toggle').prop('checked', true).trigger('change');
+            });
+			//end all on
+			//all off
+			$('.all-off').on('click', function() {
+               $('.device-toggle').prop('checked', false).trigger('change');
+            });
+			//end all off
             $('.device-toggle').on('change', function() {
                 console.log('loool');
                 var id1 = $(this).data('device-id');
@@ -360,6 +371,7 @@ function updates() {
                     .modal('show');
             });
 			//end add device
+			
 			
 			//console
 			
