@@ -1,5 +1,10 @@
 <?php
+function syncCron()
+{
 
+
+
+}
 function checkAuth()
 {
 if(!isset($_SESSION['username']))
@@ -18,21 +23,7 @@ $updates['temp'] = explode('=', exec('sudo /opt/vc/bin/vcgencmd measure_temp'))[
 $updates['ip'] = exec('hostname -I');
 return $updates;
 }
-if($_POST['action']=='checkauth')
-{
-	
-	if(isset($_SESSION['username']))
-	{
 
-		$result = array('success'=>true, 'isauthed'=>true, 'username'=>$_SESSION['username']);
-	}
-	else
-	{
-		$result = array('success'=>true, 'isauthed'=>false);
-
-	}
-	echo json_encode($result);
-}
 
 function setGPIO($pin, $state, $inverted = false)
 {
@@ -56,6 +47,7 @@ if($state == 'true' || $state == 1)
 		if($inverted)
 		{
 			exec("gpio -g write $pin 0");
+			
 		}
 		else
 		{

@@ -94,6 +94,23 @@ if($_POST['action']=='devicechange')
 
 	R::store($device);
 }
+
+if($_POST['action']=='checkauth')
+{
+	
+	if(isset($_SESSION['username']))
+	{
+
+		$result = array('success'=>true, 'isauthed'=>true, 'username'=>$_SESSION['username']);
+	}
+	else
+	{
+		$result = array('success'=>true, 'isauthed'=>false);
+
+	}
+	echo json_encode($result);
+}
+
 if($_POST['action']=='shutdown')
 {
 	checkAuth();
