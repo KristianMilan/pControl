@@ -4,8 +4,18 @@ include 'rb.php';
 include 'dbconfig.php';
 error_reporting(E_ALL);
 
-$cronjobs = R::getAll( 'SELECT * FROM cronjob WHERE active = 1' );
+$cronjob = R::load( 'cronjob', $_GET['id'] );
+if($cronjob->task == 'turnon')
+{
 
+$state = true;
+}
+if($cronjob->task == 'turnoff')
+{
+$state = false;
+
+}
+$device->state = setGPIO($cronjob->device->pin, $state, $cronjob->device->inverted);
 
 
 ?>
