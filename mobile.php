@@ -24,6 +24,7 @@
     <script type="text/javascript" src="javascript/jquery-latest.min.js"></script>
     <script type="text/javascript" src="javascript/semantic.min.js"></script>
     <script src="javascript/pControl.js"></script>
+
 </head>
 
 <body>
@@ -245,8 +246,8 @@
     <div class="pointing ui menu">
         
         <div class="right menu">
-		<div class="temp item">[temp]</div>
-		<div class="ip item">[ip]</div>
+		<div class="temp item"><i class="ui loading icon"></i></div>
+		<div class="ip item"><i class="ui loading icon"></i></div>
           <div class="ui top right pointing dropdown link item">
             Menu
             <i class="dropdown icon"></i>

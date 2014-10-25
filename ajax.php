@@ -1,42 +1,11 @@
 <?php
+include 'functions.php';
 include 'rb.php';
 include 'dbconfig.php';
 error_reporting(E_ALL);
 session_save_path("/tmp");
 session_start();
-function checkAuth()
-{
-if(!isset($_SESSION['username']))
-	{
-		$result = array('success'=>false, 'isauthed'=>false);
-		echo json_encode($result);
-		die();
 
-	}
-	
-}
-
-function getUpdates()
-{
-$updates['temp'] = explode('=', exec('sudo /opt/vc/bin/vcgencmd measure_temp'))[1];
-$updates['ip'] = exec('hostname -I');
-return $updates;
-}
-if($_POST['action']=='checkauth')
-{
-	
-	if(isset($_SESSION['username']))
-	{
-
-		$result = array('success'=>true, 'isauthed'=>true, 'username'=>$_SESSION['username']);
-	}
-	else
-	{
-		$result = array('success'=>true, 'isauthed'=>false);
-
-	}
-	echo json_encode($result);
-}
 if($_POST['action']=='login')
 {
 	
@@ -68,11 +37,11 @@ if($_POST['action']=='login')
 if($_POST['action']=='logout')
 {
 	
-	checkAuth();
+		checkAuth();
 		session_destroy();
 		$result = array('success'=>true, 'isauthed'=>false);
 	
-	echo json_encode($result);
+		echo json_encode($result);
 }
 if($_POST['action']=='initload')
 {
@@ -116,34 +85,8 @@ if($_POST['action']=='devicechange')
 
 	//echo "Turning on pin $device->pin\n";
 	//$gpio->output(intval($device->pin), $_POST['state'] ? 1 : 0);
-	exec("gpio -g mode $device->pin output");
-	if($_POST['state'] == 'true')
-	{
-		$device->state = true;
-		if($device->inverted)
-		{
-			exec("gpio -g write $device->pin 1");
-		}
-		else
-		{
-			exec("gpio -g write $device->pin 0");
-		}
-		
-		
-	}
-	else
-	{
-		if($device->inverted)
-		{
-			exec("gpio -g write $device->pin 0");
-		}
-		else
-		{
-			exec("gpio -g write $device->pin 1");
-		}
-		$device->state = false;
-	}
-	//$device->state = $_POST['state'] ? 1 : 0;
+	
+	$device->state = setGPIO($device->pin, $_POST['state'], $device->inverted);
 	
 	
 	$result = array('success'=>true, 'isauthed'=>true, 'pin'=>$device->pin, 'state'=>$device->state);

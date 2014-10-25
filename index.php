@@ -253,12 +253,8 @@
             <i class="wrench icon"></i> Podłączaj
         </a>
         <div class="right menu">
-            <div class="item temp">
-                [temp]
-            </div>
-			 <div class="item ip">
-                [ip]
-            </div>
+		<div class="temp item"><i class="ui loading icon"></i></div>
+		<div class="ip item"><i class="ui loading icon"></i></div>
             <div class="item set-username">
                 Ja
             </div>
