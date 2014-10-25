@@ -4,5 +4,6 @@ composer.phar
 phpunit.phar
 phpunit.xml
 php-cs-fixer.phar
+dbconfig.php
 METRICS
 .idea/*
